@@ -1,0 +1,19 @@
+#!/bin/bash
+
+rm -rf scripts
+mkdir scripts
+python generate_sbatches.py
+rm -rf results
+mkdir results
+
+
+for experiment in /Users/leo/Documents/gpl/eop/poverty/replication/scripts/*.sh
+do
+    echo $experiment
+    chmod u+x $experiment
+    source $experiment
+#    $experiment
+    sleep 1
+done
+
+echo "Done"
