@@ -8,12 +8,15 @@ import numpy as np
 
 from pathlib import Path
 
-PATH_TO_DATA = Path("/home/selker/eop/data/malawi/malawi_cleaned_2016.parquet")
-PATH_TO_DATA_SUMMARY = Path("/home/selker/eop/data/malawi/malawi_summary_2016.parquet")
-SAVE_PATH = Path("/home/selker/eop/eop/run_simulations/results/")
+PATH_TO_DATA = Path("/home/selker/eop/data/malawi/malawi_cleaned_2019.parquet")
+PATH_TO_DATA_SUMMARY = Path("/home/selker/eop/data/malawi/malawi_summary_2019.parquet")
+SAVE_PATH = Path("/home/selker/eop/eop/run_simulations/investigating_saturation/")
+
+# 2016: 0.00461055475
+# 2019: 0.003361735405
 CONVERSION_FACTORS = {"malawi": 0.003361742723912196}
 
-def load_malawi_data(covariates):
+def load_malawi_data(covariates, district=None):
 
     summary = pd.read_parquet(PATH_TO_DATA_SUMMARY)
 
@@ -22,7 +25,18 @@ def load_malawi_data(covariates):
         covariate_columns += list(summary.loc[covariate]['columns'])
     
     columns_to_select = covariate_columns + ['outcome', 'hh_wgt'] 
+
+    if district:
+        district_column = f'district_{district}'
+        columns_to_select.append(district_column)
+
     df = pd.read_parquet(PATH_TO_DATA)[columns_to_select]
+    
+    if district:
+        df = df[df[district_column] == 1]
+
+    if len(df) == 0:
+        raise ValueError(f'empty df: {district}')
 
     return df[covariate_columns].to_numpy(), df.outcome.to_numpy(), df.hh_wgt.to_numpy(), covariate_columns
 
