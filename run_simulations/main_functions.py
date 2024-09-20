@@ -5,98 +5,18 @@ from functools import partial
 from multiprocessing import Pool
 import os
 
-import argh
 import numpy as np
 import pandas as pd
-from opt_targeted_transfers import (ConditionalTargetedTransfers,
-                                    HybridTargetedTransfers,
-                                    UnconditionalTargetedTransfers)
+from opt_targeted_transfers import (
+    ConditionalTargetedTransfers,
+    HybridTargetedTransfers,
+    UnconditionalTargetedTransfers,
+    GapTargetedTransfers
+)
 
 from helpers import write_result, load_malawi_data, split_data, SAVE_PATH
 
-
-def malawi_runs(features, district=None, extra_run_labels=None):
-
-    ds = [20]
-
-    tolerances = [0.2]
-
-    constraints = ["unconditional",]
-    quantile_methods = ["qr", "density"]
-
-    args = []
-
-    for d in ds:
-        features_d = features[:d]
-        for constraint in constraints:
-            if constraint == "conditional":
-                for quantile_method in quantile_methods:
-
-                    args.append(
-                        {
-                            'constraint': constraint, 
-                            'features': features_d,
-                            'method': quantile_method, 
-                            'condtol': tolerances,
-                        }
-                    )
-
-            elif constraint == "unconditional":
-
-                args.append(
-                        {
-                            'constraint': constraint,  
-                            'features': features_d,
-                            'uncondtol': tolerances,
-                        }
-                )
-
-            elif constraint == "hybrid":
-                args.append(
-                        {
-                            'constraint': constraint,  
-                            'features': features_d,
-                            'uncondtol': tolerances,
-                            'condtol': tolerances
-                        }
-                )
-    for arg in args:
-        arg.update(
-            {
-                'extra_run_labels': extra_run_labels,
-                'district': district
-            }
-        )
-
-    if False:
-
-        pool = Pool()
-    
-        pool.map_async(
-            _unpack_and_run,
-            args,
-            error_callback=error_callback
-        )
-    
-        pool.close()
-        pool.join()
-
-    else:
-
-        for args_dictionary in args:
-            _unpack_and_run(args_dictionary)
-
-def _unpack_and_run(args_dictionary):
-    return _run_simulation(
-        country='malawi', 
-        save=SAVE_PATH,
-        **args_dictionary
-    )
-
-def error_callback(error):
-    print(f"Process failed: {str(error)}")
-
-def _run_simulation(
+def run_simulation(
     country="malawi",
     constraint="unconditional",
     method="qr",
@@ -124,12 +44,12 @@ def _run_simulation(
     
     X, y, r, _ = load_malawi_data(features, district)
 
+    
     (X_train, y_train, r_train), (X_test, y_test, r_test) = split_data(
         X=X, y=y, r=r, p=0.6
     )
 
     base_name = f'{country}_d={d}_{constraint}'
-
 
     if constraint == "unconditional":
 
@@ -209,8 +129,67 @@ def _run_simulation(
                 )
 
 
+def run_gap_targeting_grid(
+    country="malawi",
+    method="qr",
+    save="malawi_results.csv",
+    features=None,
+    extra_run_labels=None,
+    district=None,
+    n_quantiles=20,
+    lambdas=None  # iterable
+):
+
+    save.mkdir(exist_ok=True)
+
+    d = len(features)
+    
+    if extra_run_labels is None:
+        extra_run_labels = dict()
+
+    if features is None:
+        # TODO: Redo this signature
+        raise ValueError('Specify some features!')
+
+    # A semi-hack to replace the incorrect d that was populated before.
+    extra_run_labels.update({'d': d})
+    
+    X, y, r, _ = load_malawi_data(features, district)
+
+    (X_train, y_train, r_train), (X_test, y_test, r_test) = split_data(
+        X=X, y=y, r=r, p=0.6
+    )
+
+    base_name = f'{country}_d={d}_gap'
+
+    if lambdas is None:
+        raise ValueError('need lambdas')
+
+    tt = GapTargetedTransfers(c_bar=2.15)
+    tt.fit(X_train, y_train, r_train, n_quantiles=n_quantiles)
+
+    for lambda_ in lambdas:
+    
+        tt.run_opt(
+            X_test,
+            lambda_
+        )
+        res = tt.evaluate(X_test, y_test, r_test)
+        write_result(
+            save / "{}.csv".format(country), 
+            res,
+            {**extra_run_labels, 'lambda': lambda_}
+        )
+        if False:
+            tt.evaluate_equity(
+                X_test,
+                y_test,
+                path=save / f'equity_{base_name}_uncondtol={tol1}_condtol={tol2}.csv'
+            )
+
+
 # TODO: Update signature + file-writing
-def _run_with_fixed_transfer_amounts(
+def run_with_fixed_transfer_amounts(
     country="malawi",
     d=2,
     tolerance=None,
@@ -239,7 +218,6 @@ def _run_with_fixed_transfer_amounts(
         dt.run_opt(X_test, r_test)
         res = dt.evaluate(X_test, y_test, r_test)
         write_result(save + "{}.csv".format(country), res)
-
 
 
 if __name__ == "__main__":

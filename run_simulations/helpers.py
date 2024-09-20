@@ -10,7 +10,7 @@ from pathlib import Path
 
 PATH_TO_DATA = Path("/home/selker/eop/data/malawi/malawi_cleaned_2019.parquet")
 PATH_TO_DATA_SUMMARY = Path("/home/selker/eop/data/malawi/malawi_summary_2019.parquet")
-SAVE_PATH = Path("/home/selker/eop/eop/run_simulations/investigating_saturation/")
+SAVE_PATH = Path("/home/selker/eop/eop/run_simulations/results")
 
 # 2016: 0.00461055475
 # 2019: 0.003361735405
@@ -40,8 +40,8 @@ def load_malawi_data(covariates, district=None):
 
     return df[covariate_columns].to_numpy(), df.outcome.to_numpy(), df.hh_wgt.to_numpy(), covariate_columns
 
-def split_data(X, y, p, r=None):
-    rng = np.random.RandomState(123456)
+def split_data(X, y, p, r=None, random_seed=123456):
+    rng = np.random.RandomState(random_seed)
     permutation = rng.permutation(X.shape[0])
     index_train = permutation[: int(p * X.shape[0])]
     index_test = permutation[int(p * X.shape[0]) :]
