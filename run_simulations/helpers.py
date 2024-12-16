@@ -13,8 +13,8 @@ PATH_TO_DATA_SUMMARY = Path("/home/selker/eop/data/malawi/malawi_summary_2019.pa
 SAVE_PATH = Path("/home/selker/eop/eop/run_simulations/results")
 
 # 2016: 0.00461055475
-# 2019: 0.003361735405
-CONVERSION_FACTORS = {"malawi": 0.003361742723912196}
+# 2019: 0.0033617
+CONVERSION_FACTORS = {"malawi": 0.0033617}
 
 def load_malawi_data(covariates, district=None):
 
