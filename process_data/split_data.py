@@ -28,6 +28,13 @@ def main(
     else:
         raise ValueError(f'Expected path to csv or parquet file for input, got {in_path}')
 
+    from IPython import embed
+    # embed()
+    # ensure determinism; we'll shuffle.
+    if 'hhid' in full_dataset.columns:
+        full_dataset.sort_values('hhid', inplace=True)
+        full_dataset.drop(columns=['hhid'], inplace=True)
+
     train, test = train_test_split(
         full_dataset, train_size=float(train_fraction), 
         random_state=random_seed, stratify=full_dataset[stratify]
