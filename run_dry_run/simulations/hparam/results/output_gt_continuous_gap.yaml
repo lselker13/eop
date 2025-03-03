@@ -1,0 +1,10 @@
+continuous_gap:
+  n_regressors: 10
+  neural_network:
+    lr: 0.001
+    n_hidden_units: 256
+    n_layers: 3
+data:
+  outcome: consumption_per_capita_per_day
+  weight: hh_wgt
+savedir: /home/selker/eop/eop/run_dry_run/simulations/learn

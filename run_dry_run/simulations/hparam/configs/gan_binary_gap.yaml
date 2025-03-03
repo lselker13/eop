@@ -1,0 +1,20 @@
+savedir: /home/selker/eop/eop/run_dry_run/simulations/hparam/results
+device: cuda
+data:
+  ntrain: 6480
+  nval: 50000
+  ntest: 4574
+  outcome: consumption_per_capita_per_day
+  weight: hh_wgt
+  gan: 
+    objectspath: /home/selker/eop/eop/run_dry_run/simulations/gan/pickled/objects-maxepochs=2500_lr=0.001_batchsize=128_dropout=0.0_trial=0.pickle
+    summarypath: /data/eop/malawi/cleaned/summary_2019.parquet
+binary_gap:
+  n_regressors: [10, 20, 30]
+  neural_network:
+    n_layers: [1, 2, 3]
+    n_hidden_units: [256, 1024, 2048]
+    lr: [0.001, 0.005, 0.01]
+
+
+

@@ -1,0 +1,11 @@
+continuous_rate:
+  density_estimation:
+    degree: 6
+    n_bins: 200
+    n_features: 15
+    n_knots: 2
+  n_alpha: 200
+data:
+  outcome: consumption_per_capita_per_day
+  weight: hh_wgt
+savedir: /home/selker/eop/eop/run_dry_run/simulations/learn
