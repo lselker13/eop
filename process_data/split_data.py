@@ -17,7 +17,7 @@ def main(
     random_seed: int = 1234,
     stratify: str = 'ea_id'
 ):
-
+    
     in_path = Path(in_path)
     out_path = Path(out_path)
 
@@ -28,17 +28,26 @@ def main(
     else:
         raise ValueError(f'Expected path to csv or parquet file for input, got {in_path}')
 
-    from IPython import embed
-    # embed()
     # ensure determinism; we'll shuffle.
     if 'hhid' in full_dataset.columns:
         full_dataset.sort_values('hhid', inplace=True)
         full_dataset.drop(columns=['hhid'], inplace=True)
-
+    
+    # Allow stratification on multiple columns
+    stratify = eval(stratify)
+    if isinstance(stratify, list):
+        full_dataset['__stratify__'] = full_dataset[stratify].astype(str).agg('-'.join, axis=1)
+        stratify = '__stratify__'
+        full_dataset.to_csv(out_path / 'full_with_stratifier.csv', index=False)
     train, test = train_test_split(
         full_dataset, train_size=float(train_fraction), 
         random_state=random_seed, stratify=full_dataset[stratify]
     )
+
+    if '__stratify__' in train.columns:
+        train.drop(columns=['__stratify__'], inplace=True)
+    if '__stratify__' in test.columns:
+        test.drop(columns=['__stratify__'], inplace=True)
 
     train.to_parquet(out_path / 'train.parquet')
     test.to_parquet(out_path / 'test.parquet')
