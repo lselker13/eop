@@ -34,8 +34,9 @@ def main(
         full_dataset.drop(columns=['hhid'], inplace=True)
     
     # Allow stratification on multiple columns
-    stratify = eval(stratify)
-    if isinstance(stratify, list):
+    if '[' in stratify:
+        stratify = eval(str(stratify))
+        assert isinstance(stratify, list)
         full_dataset['__stratify__'] = full_dataset[stratify].astype(str).agg('-'.join, axis=1)
         stratify = '__stratify__'
         full_dataset.to_csv(out_path / 'full_with_stratifier.csv', index=False)
