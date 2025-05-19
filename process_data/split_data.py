@@ -9,13 +9,13 @@ from sklearn.model_selection import train_test_split
 @argh.arg("--out_path", type=str)
 @argh.arg("--train_fraction", type=float, default=0.6)
 @argh.arg("--random_seed", type=int, default=1234)
-@argh.arg("--stratify", type=str, default='ea_id')
+@argh.arg("--stratify", type=str, nargs='*')
 def main(
     in_path: str = None,
     out_path: str = None,
     train_fraction: float = 0.6,
     random_seed: int = 1234,
-    stratify: str = 'ea_id'
+    stratify: str = None
 ):
     
     in_path = Path(in_path)
@@ -34,15 +34,18 @@ def main(
         full_dataset.drop(columns=['hhid'], inplace=True)
     
     # Allow stratification on multiple columns
-    if '[' in stratify:
-        stratify = eval(str(stratify))
-        assert isinstance(stratify, list)
+    if stratify is None:
+        print('No stratifier provided, using random split')
+    elif len(stratify) > 1:
         full_dataset['__stratify__'] = full_dataset[stratify].astype(str).agg('-'.join, axis=1)
         stratify = '__stratify__'
         full_dataset.to_csv(out_path / 'full_with_stratifier.csv', index=False)
+
+    stratify=full_dataset[stratify]
+        
     train, test = train_test_split(
         full_dataset, train_size=float(train_fraction), 
-        random_state=random_seed, stratify=full_dataset[stratify]
+        random_state=random_seed, stratify=stratify
     )
 
     if '__stratify__' in train.columns:
