@@ -31,7 +31,6 @@ def main(
     # ensure determinism; we'll shuffle.
     if 'hhid' in full_dataset.columns:
         full_dataset.sort_values('hhid', inplace=True)
-        full_dataset.drop(columns=['hhid'], inplace=True)
     
     # Allow stratification on multiple columns
     if stratify is None:
