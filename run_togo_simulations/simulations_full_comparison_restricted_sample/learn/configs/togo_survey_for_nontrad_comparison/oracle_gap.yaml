@@ -1,0 +1,6 @@
+data:
+  geo_extrapolation: true
+  outcome: consumption_per_capita_per_day
+  weight: headcount_adjusted_hh_wgt
+oracle_gap: {}
+savedir: /home/selker/eop/eop/run_togo_simulations/simulations/learn/results/togo_survey_for_nontrad_comparison

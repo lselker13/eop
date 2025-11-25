@@ -1,0 +1,138 @@
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_hparam.py", line 240, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_hparam.py", line 30, in main
+    with open(config) as stream:
+         ^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/selker/eop/eop/run_togo_simulations/simulations/hparam/configs/togo_cdr/gt_continuous_gap.yaml'
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_hparam.py", line 240, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_hparam.py", line 30, in main
+    with open(config) as stream:
+         ^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/selker/eop/eop/run_togo_simulations/simulations/hparam/configs/togo_cdr/gt_modern_pmt.yaml'
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 388, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 292, in main
+    with open(config) as stream:
+         ^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/selker/eop/eop/run_togo_simulations/simulations/hparam/results/togo_cdr/output_gt_continuous_gap.yaml'
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 388, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 292, in main
+    with open(config) as stream:
+         ^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/selker/eop/eop/run_togo_simulations/simulations/hparam/results/togo_cdr/output_gt_modern_pmt.yaml'
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 388, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 292, in main
+    with open(config) as stream:
+         ^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/selker/eop/eop/run_togo_simulations/simulations/learn/configs/togo_cdr/oracle_gap.yaml'
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 388, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 292, in main
+    with open(config) as stream:
+         ^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/selker/eop/eop/run_togo_simulations/simulations/learn/configs/togo_cdr/ubi.yaml'

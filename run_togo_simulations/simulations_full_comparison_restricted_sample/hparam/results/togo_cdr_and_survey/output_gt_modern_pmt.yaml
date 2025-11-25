@@ -1,0 +1,11 @@
+data:
+  geo_extrapolation: true
+  outcome: consumption_per_capita_per_day
+  weight: headcount_adjusted_hh_wgt
+modern_pmt:
+  neural_network:
+    lr: 0.001
+    n_hidden_units: 1024
+    n_layers: 3
+  transfer_value: 3.0
+savedir: /home/selker/eop/eop/run_togo_simulations/simulations/learn/results/togo_cdr_and_survey

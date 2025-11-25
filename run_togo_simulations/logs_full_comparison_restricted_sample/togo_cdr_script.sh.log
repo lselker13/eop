@@ -1,0 +1,224 @@
+{'binary_gap': {'n_regressors': [10, 20, 30], 'neural_network': {'lr': [0.001, 0.005, 0.01], 'n_hidden_units': [256, 1024, 2048], 'n_layers': [1, 2, 3]}}, 'data': {'geo_extrapolation': True, 'gt': {'summarypath': '/data/eop/country_data/togo/cleaned/cdr/summary.parquet', 'trainpath': '/data/eop/country_data/togo/cleaned/cdr/train.parquet'}, 'outcome': 'consumption_per_capita_per_day', 'weight': 'headcount_adjusted_hh_wgt'}, 'device': 'cuda', 'savedir': '/home/selker/eop/eop/run_togo_simulations/simulations/hparam/results/togo_cdr'}
+Training neural network with 1 layers, 256 hidden units, and learning rate 0.001 for transfer size 0.5 during trial 0...
+AttributeError: 'float' object has no attribute 'sqrt'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_hparam.py", line 240, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_hparam.py", line 168, in main
+    opt_nn_hparams = get_optimal_nn_improvement_parameters(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/hparam/nn_hparam_search.py", line 245, in get_optimal_nn_improvement_parameters
+    model = get_conditional_improvement_regressor(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/package/src/opt_targeted_transfers/conditional_improvement.py", line 105, in get_conditional_improvement_regressor
+    X_train, X_mean, X_std = standardize(X_train)
+                             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/package/src/opt_targeted_transfers/dataset_utils.py", line 15, in standardize
+    z_std = z.std(axis=0)
+            ^^^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/numpy/core/_methods.py", line 210, in _std
+    ret = um.sqrt(ret, out=ret)
+          ^^^^^^^^^^^^^^^^^^^^^
+TypeError: loop of ufunc does not support argument 0 of type float which has no callable sqrt method
+{'continuous_gap': {'n_regressors': [10, 20, 30], 'neural_network': {'lr': [0.001, 0.005, 0.01], 'n_hidden_units': [256, 1024, 2048], 'n_layers': [1, 2, 3]}}, 'data': {'geo_extrapolation': True, 'gt': {'summarypath': '/data/eop/country_data/togo/cleaned/cdr/summary.parquet', 'trainpath': '/data/eop/country_data/togo/cleaned/cdr/train.parquet'}, 'outcome': 'consumption_per_capita_per_day', 'weight': 'headcount_adjusted_hh_wgt'}, 'device': 'cuda', 'savedir': '/home/selker/eop/eop/run_togo_simulations/simulations/hparam/results/togo_cdr'}
+Training neural network with 1 layers, 256 hidden units, and learning rate 0.001 for quantile 0.25 during trial 0...
+AttributeError: 'float' object has no attribute 'sqrt'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_hparam.py", line 240, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_hparam.py", line 136, in main
+    opt_nn_hparams = get_optimal_nn_quantile_regression_parameters(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/hparam/nn_hparam_search.py", line 345, in get_optimal_nn_quantile_regression_parameters
+    model = get_quantile_regressor(
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/package/src/opt_targeted_transfers/quantile_regression.py", line 78, in get_quantile_regressor
+    X_train, X_mean, X_std = standardize(X_train)
+                             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/package/src/opt_targeted_transfers/dataset_utils.py", line 15, in standardize
+    z_std = z.std(axis=0)
+            ^^^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/numpy/core/_methods.py", line 210, in _std
+    ret = um.sqrt(ret, out=ret)
+          ^^^^^^^^^^^^^^^^^^^^^
+TypeError: loop of ufunc does not support argument 0 of type float which has no callable sqrt method
+{'data': {'geo_extrapolation': True, 'gt': {'summarypath': '/data/eop/country_data/togo/cleaned/cdr/summary.parquet', 'trainpath': '/data/eop/country_data/togo/cleaned/cdr/train.parquet'}, 'outcome': 'consumption_per_capita_per_day', 'weight': 'headcount_adjusted_hh_wgt'}, 'device': 'cuda', 'modern_pmt': {'neural_network': {'lr': [0.001, 0.005, 0.01], 'n_hidden_units': [256, 1024, 2048], 'n_layers': [1, 2, 3]}}, 'savedir': '/home/selker/eop/eop/run_togo_simulations/simulations/hparam/results/togo_cdr'}
+Training neural network with 1 layers, 256 hidden units, and learning rate 0.001 during trial 0...
+AttributeError: 'float' object has no attribute 'sqrt'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_hparam.py", line 240, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_hparam.py", line 200, in main
+    opt_nn_hparams = get_optimal_nn_pmt_parameters(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/hparam/nn_hparam_search.py", line 150, in get_optimal_nn_pmt_parameters
+    model = get_pmt_nn_regressor(
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/package/src/opt_targeted_transfers/prediction.py", line 80, in get_pmt_nn_regressor
+    X_train, X_mean, X_std = standardize(X_train)
+                             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/package/src/opt_targeted_transfers/dataset_utils.py", line 15, in standardize
+    z_std = z.std(axis=0)
+            ^^^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/numpy/core/_methods.py", line 210, in _std
+    ret = um.sqrt(ret, out=ret)
+          ^^^^^^^^^^^^^^^^^^^^^
+TypeError: loop of ufunc does not support argument 0 of type float which has no callable sqrt method
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 388, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 292, in main
+    with open(config) as stream:
+         ^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/selker/eop/eop/run_togo_simulations/simulations/hparam/results/togo_cdr/output_gt_binary_gap.yaml'
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 388, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 292, in main
+    with open(config) as stream:
+         ^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/selker/eop/eop/run_togo_simulations/simulations/hparam/results/togo_cdr/output_gt_continuous_gap.yaml'
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 388, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 292, in main
+    with open(config) as stream:
+         ^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/selker/eop/eop/run_togo_simulations/simulations/hparam/results/togo_cdr/output_gt_modern_pmt.yaml'
+Learning oracle gap targeted transfers...
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.12783755032621918, 'post_transfer_poverty_rate': 0.21862560181762092, 'policy_cost_per_capita': 0.0, 'budget': 0.0, 'policy_type': 'oracle_gap', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.1187386901747822, 'post_transfer_poverty_rate': 0.21862560181762092, 'policy_cost_per_capita': 0.009098860151436926, 'budget': 0.00913125489439283, 'policy_type': 'oracle_gap', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.10971589728118722, 'post_transfer_poverty_rate': 0.21862560181762092, 'policy_cost_per_capita': 0.01812165304503191, 'budget': 0.01826250978878566, 'policy_type': 'oracle_gap', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.10065075929442474, 'post_transfer_poverty_rate': 0.21862560181762092, 'policy_cost_per_capita': 0.027186791031794423, 'budget': 0.027393764683178494, 'policy_type': 'oracle_gap', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.09149161724674312, 'post_transfer_poverty_rate': 0.21862560181762092, 'policy_cost_per_capita': 0.03634593307947608, 'budget': 0.03652501957757132, 'policy_type': 'oracle_gap', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.08227744505632166, 'post_transfer_poverty_rate': 0.21862560181762092, 'policy_cost_per_capita': 0.04556010526989755, 'budget': 0.04565627447196415, 'policy_type': 'oracle_gap', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.0733996451827649, 'post_transfer_poverty_rate': 0.21862560181762092, 'policy_cost_per_capita': 0.05443790514345438, 'budget': 0.05478752936635699, 'policy_type': 'oracle_gap', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.06419524686903673, 'post_transfer_poverty_rate': 0.21862560181762092, 'policy_cost_per_capita': 0.06364230345718241, 'budget': 0.06391878426074982, 'policy_type': 'oracle_gap', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.05488664354078223, 'post_transfer_poverty_rate': 0.21862560181762092, 'policy_cost_per_capita': 0.07295090678543702, 'budget': 0.07305003915514265, 'policy_type': 'oracle_gap', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.045880563292978495, 'post_transfer_poverty_rate': 0.21862560181762092, 'policy_cost_per_capita': 0.08195698703324085, 'budget': 0.08218129404953547, 'policy_type': 'oracle_gap', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.03667079662882935, 'post_transfer_poverty_rate': 0.21862560181762092, 'policy_cost_per_capita': 0.09116675369738987, 'budget': 0.0913125489439283, 'policy_type': 'oracle_gap', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.02740217327884135, 'post_transfer_poverty_rate': 0.21862560181762092, 'policy_cost_per_capita': 0.10043537704737784, 'budget': 0.10044380383832113, 'policy_type': 'oracle_gap', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.01842694600193351, 'post_transfer_poverty_rate': 0.21862560181762092, 'policy_cost_per_capita': 0.10941060432428572, 'budget': 0.10957505873271398, 'policy_type': 'oracle_gap', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.009969056040175965, 'post_transfer_poverty_rate': 0.21862560181762092, 'policy_cost_per_capita': 0.11786849428604332, 'budget': 0.1187063136271068, 'policy_type': 'oracle_gap', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.0, 'post_transfer_poverty_rate': 0.0, 'policy_cost_per_capita': 0.12783755032621918, 'budget': 0.12783756852149963, 'policy_type': 'oracle_gap', 'd': 1650}
+Learning UBI targeted transfers...
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.11734084458877914, 'post_transfer_poverty_rate': 0.2013788200711133, 'policy_cost_per_capita': 0.04999999803367253, 'budget': 0.05, 'policy_type': 'ubi', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.08937338098794181, 'post_transfer_poverty_rate': 0.17105933841958176, 'policy_cost_per_capita': 0.1999999921346901, 'budget': 0.2, 'policy_type': 'ubi', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.06689568539157759, 'post_transfer_poverty_rate': 0.1333541255662567, 'policy_cost_per_capita': 0.3499999862357069, 'budget': 0.35, 'policy_type': 'ubi', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.04837336796914784, 'post_transfer_poverty_rate': 0.11327872258698335, 'policy_cost_per_capita': 0.4999999803367245, 'budget': 0.49999999999999994, 'policy_type': 'ubi', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.033787809498857485, 'post_transfer_poverty_rate': 0.08485657390701817, 'policy_cost_per_capita': 0.6499999744377413, 'budget': 0.65, 'policy_type': 'ubi', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.022459273746829198, 'post_transfer_poverty_rate': 0.06606827473297017, 'policy_cost_per_capita': 0.7999999685387604, 'budget': 0.8, 'policy_type': 'ubi', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.013998323509338639, 'post_transfer_poverty_rate': 0.04739104036707431, 'policy_cost_per_capita': 0.9499999626397756, 'budget': 0.95, 'policy_type': 'ubi', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.007999786745995014, 'post_transfer_poverty_rate': 0.03304316831054166, 'policy_cost_per_capita': 1.099999956740794, 'budget': 1.1, 'policy_type': 'ubi', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.004090858713011204, 'post_transfer_poverty_rate': 0.020979051347239874, 'policy_cost_per_capita': 1.2499999508418114, 'budget': 1.25, 'policy_type': 'ubi', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.0017320793673178906, 'post_transfer_poverty_rate': 0.012218262461829, 'policy_cost_per_capita': 1.3999999449428275, 'budget': 1.4, 'policy_type': 'ubi', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.0005558777841245445, 'post_transfer_poverty_rate': 0.006141655729152262, 'policy_cost_per_capita': 1.549999939043843, 'budget': 1.55, 'policy_type': 'ubi', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 9.208376387338023e-05, 'post_transfer_poverty_rate': 0.0009027515770867467, 'policy_cost_per_capita': 1.6999999331448659, 'budget': 1.7, 'policy_type': 'ubi', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.0, 'post_transfer_poverty_rate': 0.0, 'policy_cost_per_capita': 1.8499999272458825, 'budget': 1.8499999999999999, 'policy_type': 'ubi', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.0, 'post_transfer_poverty_rate': 0.0, 'policy_cost_per_capita': 1.9999999213468982, 'budget': 2.0, 'policy_type': 'ubi', 'd': 1650}
+{'initial_poverty_rate': 0.2186256, 'initial_poverty_gap': 0.12783756852149963, 'post_transfer_poverty_gap': 0.0, 'post_transfer_poverty_rate': 0.0, 'policy_cost_per_capita': 2.1499999154479155, 'budget': 2.15, 'policy_type': 'ubi', 'd': 1650}

@@ -1,0 +1,254 @@
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_hparam.py", line 240, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_hparam.py", line 55, in main
+    get_gt_train_data_generator(
+  File "/home/selker/eop/poverty/dry_run/hparam/data_generators.py", line 199, in get_gt_train_data_generator
+    summary = pd.read_parquet(summarypath)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/parquet.py", line 667, in read_parquet
+    return impl.read(
+           ^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/parquet.py", line 267, in read
+    path_or_handle, handles, filesystem = _get_path_or_handle(
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/parquet.py", line 140, in _get_path_or_handle
+    handles = get_handle(
+              ^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/data/eop/country_data/togo/cleaned/survey_for_nontrad_comparison/summary.parquet'
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_hparam.py", line 240, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_hparam.py", line 55, in main
+    get_gt_train_data_generator(
+  File "/home/selker/eop/poverty/dry_run/hparam/data_generators.py", line 199, in get_gt_train_data_generator
+    summary = pd.read_parquet(summarypath)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/parquet.py", line 667, in read_parquet
+    return impl.read(
+           ^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/parquet.py", line 267, in read
+    path_or_handle, handles, filesystem = _get_path_or_handle(
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/parquet.py", line 140, in _get_path_or_handle
+    handles = get_handle(
+              ^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/data/eop/country_data/togo/cleaned/survey_for_nontrad_comparison/summary.parquet'
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_hparam.py", line 240, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_hparam.py", line 55, in main
+    get_gt_train_data_generator(
+  File "/home/selker/eop/poverty/dry_run/hparam/data_generators.py", line 199, in get_gt_train_data_generator
+    summary = pd.read_parquet(summarypath)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/parquet.py", line 667, in read_parquet
+    return impl.read(
+           ^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/parquet.py", line 267, in read
+    path_or_handle, handles, filesystem = _get_path_or_handle(
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/parquet.py", line 140, in _get_path_or_handle
+    handles = get_handle(
+              ^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/data/eop/country_data/togo/cleaned/survey_for_nontrad_comparison/summary.parquet'
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 388, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 292, in main
+    with open(config) as stream:
+         ^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/selker/eop/eop/run_togo_simulations/simulations/hparam/results/togo_survey_for_nontrad_comparison/output_gt_binary_gap.yaml'
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 388, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 292, in main
+    with open(config) as stream:
+         ^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/selker/eop/eop/run_togo_simulations/simulations/hparam/results/togo_survey_for_nontrad_comparison/output_gt_continuous_gap.yaml'
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 388, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 292, in main
+    with open(config) as stream:
+         ^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/selker/eop/eop/run_togo_simulations/simulations/hparam/results/togo_survey_for_nontrad_comparison/output_gt_modern_pmt.yaml'
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 388, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 323, in main
+    load_datasets(
+  File "/home/selker/eop/poverty/dry_run/learn/data_loader.py", line 70, in load_datasets
+    summary = pd.read_parquet(summarypath)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/parquet.py", line 667, in read_parquet
+    return impl.read(
+           ^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/parquet.py", line 267, in read
+    path_or_handle, handles, filesystem = _get_path_or_handle(
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/parquet.py", line 140, in _get_path_or_handle
+    handles = get_handle(
+              ^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/data/eop/country_data/togo/cleaned/survey_for_nontrad_comparison/summary.parquet'
+Traceback (most recent call last):
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 388, in <module>
+    _parser.dispatch()
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/helpers.py", line 56, in dispatch
+    return dispatch(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 199, in dispatch
+    return run_endpoint_function(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 270, in run_endpoint_function
+    return _process_command_output(lines, output_file, raw_output, always_flush)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 290, in _process_command_output
+    for line in lines:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 415, in _execute_command
+    for line in result:
+  File "/home/selker/.local/lib/python3.11/site-packages/argh/dispatching.py", line 395, in _call
+    result = function(*positional_values, **values_by_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/selker/eop/poverty/dry_run/main_learn.py", line 323, in main
+    load_datasets(
+  File "/home/selker/eop/poverty/dry_run/learn/data_loader.py", line 70, in load_datasets
+    summary = pd.read_parquet(summarypath)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/parquet.py", line 667, in read_parquet
+    return impl.read(
+           ^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/parquet.py", line 267, in read
+    path_or_handle, handles, filesystem = _get_path_or_handle(
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/parquet.py", line 140, in _get_path_or_handle
+    handles = get_handle(
+              ^^^^^^^^^^^
+  File "/usr/local/anaconda3/lib/python3.11/site-packages/pandas/io/common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/data/eop/country_data/togo/cleaned/survey_for_nontrad_comparison/summary.parquet'

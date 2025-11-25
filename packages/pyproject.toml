@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eop-data-common"
+version = "0.1.0"
+description = "Common machinery for data processing in the EOP project"
+requires-python = ">=3.7"
+
+dependencies = [
+    "pyreadstat>=1.2.7",
+    "pandas>=2.2.1",
+]
