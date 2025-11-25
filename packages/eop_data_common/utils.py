@@ -3,26 +3,24 @@ import pyreadstat
 
 import os
 
-def get_2021_currency_conversion_factor(country_directory_name):
+def get_2021_currency_conversion_factor(country_code):
 
     conversion_factors = pd.read_csv('/data/eop/compiled_country_data/currency_conversion.csv')
-    row = conversion_factors[conversion_factors['Country directory name'] == country_directory_name]
+    row = conversion_factors[conversion_factors['country_code'] == country_code]
     assert len(row) == 1
     return row['Conversion Factor'].values[0]
 
 
-def get_ehcvm_consumption(country_directory_name, survey_year):
+def get_ehcvm_consumption(country_code, survey_year):
 
     conversion_factors = pd.read_csv('/data/eop/compiled_country_data/currency_conversion.csv')
-    row = conversion_factors[conversion_factors['Country directory name'] == country_directory_name]
+    row = conversion_factors[conversion_factors['country_code'] == country_code]
     assert len(row) == 1
     currency_factor = row['Conversion Factor'].values[0]
 
-    country_code = row['country_code'].values[0].lower()
-
     welfare_files = [
         f for f in os.listdir('/data/eop/other/ehcvm/factors_and_deflators') if (
-            country_code in f.lower()
+            country_code.lower() in f.lower()
             and str(survey_year) in f
         )
     ]
