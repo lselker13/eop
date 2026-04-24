@@ -1,0 +1,11 @@
+data:
+  geo_extrapolation: true
+  gt:
+    summarypath: /data/eop/country_data/TGO/cleaned/mosaiks_satellite_cdr_sample/summary.parquet
+    trainpath: /data/eop/country_data/TGO/cleaned/mosaiks_satellite_cdr_sample/train.parquet
+  outcome: consumption_per_capita_per_day
+  povertyline: 2.15
+  weight: headcount_adjusted_hh_wgt
+  year: 2017
+savedir: /home/selker/eop/eop/run_togo_simulations/simulations_20260128/learn/results/TGO_mosaiks_satellite_cdr_sample
+ubi: {}

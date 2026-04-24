@@ -1,5 +1,6 @@
 **/*.ipynb_checkpoints/
 **/*.pyc
+**/*.log
 **/*.parquet
 **/*.cpg
 **/*.dbf
@@ -11,3 +12,4 @@
 **/*.pdf
 **/*~
 **/#**#
+**/wandb

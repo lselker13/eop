@@ -4,17 +4,18 @@ import numpy as np
 import shutil
 import yaml
 
-
-C_BAR = 3.0
-BUDGETS = np.linspace(0.05, 3.0, 15)
-ORACLE_BUDGETS = np.linspace(0.0, 3.0, 15)
+C_BAR = 2.15
+PPP_YEAR = 2017
+BUDGETS = np.linspace(0.05, C_BAR, 15)
+ORACLE_BUDGETS = np.linspace(0.0, C_BAR, 15)
+AUX_PATH = '/data/eop/compiled_country_data/auxiliary_data/auxiliary_data_20260107.csv'
 
 scripts_directory = Path('/home/selker/eop/eop/run_togo_simulations/scripts')
 
-top_level_simulations_directory = Path('/home/selker/eop/eop/run_togo_simulations/simulations')
+top_level_simulations_directory = Path('/home/selker/eop/eop/run_togo_simulations/simulations_20260318')
 dry_run_code_path = Path('/home/selker/eop/poverty/dry_run')
 
-def generate_runs(data_path, country, clear_existing_configs=False):
+def generate_runs(data_path, country, clear_existing_configs=False, clear_existing_scripts=False):
     data_path = Path(data_path)
 
     if data_path.name == country:
@@ -29,10 +30,13 @@ def generate_runs(data_path, country, clear_existing_configs=False):
     base_config = {
         "savedir": f"{hparam_savedir}",
         "device": 'cuda',
+        "auxpath": AUX_PATH,
         "data": {
             "geo_extrapolation": True,
             "outcome": "consumption_per_capita_per_day",
             "weight": "headcount_adjusted_hh_wgt",
+            "year": PPP_YEAR,
+            "povertyline": C_BAR,
             "gt": {
                 "trainpath": trainpath,
                 "summarypath": summarypath
@@ -59,7 +63,6 @@ def generate_runs(data_path, country, clear_existing_configs=False):
     continuous_gap_config["continuous_gap"] = default_nn_config.copy()
 
     continuous_rate_config = base_config.copy()
-
     continuous_rate_config["continuous_rate"] = {
         "n_alpha": [50, 100, 200],
         "density_estimation": {
@@ -84,25 +87,18 @@ def generate_runs(data_path, country, clear_existing_configs=False):
 
     learn_savedir = top_level_simulations_directory / 'learn' / 'results' / setting_code
 
-    oracle_config = {
-        "oracle_gap": {},
-        "data": {
-            "outcome": "consumption_per_capita_per_day",
-            "weight": "headcount_adjusted_hh_wgt",
-            "geo_extrapolation": True,
-        },
-        "savedir": f"{learn_savedir}",
-    }
-    
-    ubi_config = {
-        "ubi": {},
-        "data": {
-            "outcome": "consumption_per_capita_per_day",
-            "weight": "headcount_adjusted_hh_wgt",
-            "geo_extrapolation": True,
-        },
-        "savedir": f"{learn_savedir}",
-    }
+    # Oracle and UBI configs go straight to the learn directory since they don't require hparam tuning
+    oracle_config = base_config.copy()
+    oracle_config["oracle_gap"] = {}
+    oracle_config["savedir"] = f"{learn_savedir}"
+    del oracle_config["auxpath"]
+    del oracle_config["device"]
+
+    ubi_config = base_config.copy()
+    ubi_config["ubi"] = {}
+    ubi_config["savedir"] = f"{learn_savedir}"
+    del ubi_config["auxpath"]
+    del ubi_config["device"]
 
     # Create necessary directories
 
@@ -143,6 +139,10 @@ def generate_runs(data_path, country, clear_existing_configs=False):
     with (top_level_simulations_directory / "learn" / "configs" / setting_code / f"ubi.yaml").open('w') as file:
         yaml.dump(ubi_config, file, default_flow_style=False)
 
+    if clear_existing_scripts:
+        shutil.rmtree(scripts_directory, ignore_errors=True)
+    
+    scripts_directory.mkdir(parents=True, exist_ok=True)
     script_file_path = scripts_directory / f"{setting_code}_script.sh"
 
     with script_file_path.open('w') as f:
@@ -152,7 +152,7 @@ def generate_runs(data_path, country, clear_existing_configs=False):
         for config in (top_level_simulations_directory / 'hparam' / 'configs' / setting_code).iterdir():
 
             base_cmd = (
-                f"python main_hparam.py main "
+                f"/home/selker/.conda/envs/dry_run/bin/python main_hparam.py main "
                 f"--config {config} "
                 f"--learnsavedir {top_level_simulations_directory}/learn/results/{setting_code} "
             )
@@ -164,15 +164,16 @@ def generate_runs(data_path, country, clear_existing_configs=False):
             hparam_output_config_path = f"{top_level_simulations_directory}/hparam/results/{setting_code}/output_{config.name}"
 
             base_cmd = (
-                f"python main_learn.py main "
+                f"/home/selker/.conda/envs/dry_run/bin/python main_learn.py main "
                 f"--config {hparam_output_config_path} "
                 f"--trainpath {trainpath} "
                 f"--testpath {testpath} "
                 f"--summarypath {summarypath} "
                 f"--device cuda "
                 f"--country {country} "
-                f"--povertyline 2.15 "
-                f"--year 2017 "
+                f"--povertyline {C_BAR} "
+                f"--auxpath {AUX_PATH} "
+                f"--year {PPP_YEAR} "
             )
             
             print(base_cmd, file=f)
@@ -182,15 +183,16 @@ def generate_runs(data_path, country, clear_existing_configs=False):
         for config in (top_level_simulations_directory / "learn" / "configs" / setting_code).iterdir():
 
             base_cmd = (
-                f"python main_learn.py main "
+                f"/home/selker/.conda/envs/dry_run/bin/python main_learn.py main "
                 f"--config {config} "
                 f"--trainpath {trainpath} "
                 f"--testpath {testpath} "
                 f"--summarypath {summarypath} "
                 f"--device cuda "
                 f"--country {country} "
-                f"--povertyline 2.15 "
-                f"--year 2017 "
+                f"--povertyline {C_BAR} "
+                f"--auxpath {AUX_PATH} "
+                f"--year {PPP_YEAR} "
             )
         
             print(base_cmd, file=f)
@@ -201,9 +203,17 @@ def generate_runs(data_path, country, clear_existing_configs=False):
 
 if __name__ == '__main__':
 
-    scripts_directory.mkdir(exist_ok=True)
-    data_path = '/data/eop/country_data/togo/cleaned/satellite'
-    generate_runs(data_path, 'togo')
 
-    data_path = '/data/eop/country_data/togo/cleaned/survey_satellite_sample'
-    generate_runs(data_path, 'togo')
+    data_path = '/data/eop/country_data/TGO/cleaned_for_nontrad_experiments'
+    
+    subdirs = [
+        'survey_satellite_sample', 'alpha_earth_satellite_sample', 'satej_features_survey_coordinates_satellite_sample', 
+        'satej_features_1nn_coordinates_satellite_sample',
+        'alpha_earth_satellite_sample', 'mosaiks_satellite_sample', 
+        'survey_satellite_cdr_sample', 'cdr', 'mosaiks_satellite_cdr_sample', 'alpha_earth_satellite_cdr_sample',
+    ]
+
+    subdirs = ['alpha_earth_and_survey_satellite_sample']
+
+    for subdir in subdirs:
+        generate_runs(f"{data_path}/{subdir}", 'TGO', clear_existing_configs=True, clear_existing_scripts=True)

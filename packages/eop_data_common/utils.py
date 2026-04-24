@@ -1,16 +1,45 @@
 import pandas as pd
 import pyreadstat
+from glob import glob
 
 import os
+
+def get_latest_aux_data():
+
+    aux_files = glob('/data/eop/compiled_country_data/auxiliary_data/auxiliary_data_*.csv')
+    latest_file = max(aux_files, key=lambda x: x.split('_')[-1].split('.')[0])
+    return pd.read_csv(latest_file)
 
 def get_2021_currency_conversion_factor(country_code):
 
     conversion_factors = pd.read_csv('/data/eop/compiled_country_data/currency_conversion.csv')
     row = conversion_factors[conversion_factors['country_code'] == country_code]
-    assert len(row) == 1
+    assert len(row) == 1, f'instead of one row for country {country_code}, {len(row)} found.'
     return row['Conversion Factor'].values[0]
 
+def get_2017_currency_conversion_factor(country_code):
+    
+    aux_files = glob('/data/eop/compiled_country_data/auxiliary_data/auxiliary_data_*.csv')
+    latest_file = max(aux_files, key=lambda x: x.split('_')[-1].split('.')[0])
+    aux_data = pd.read_csv(latest_file)
 
+    row = aux_data[aux_data['country_code'] == country_code]
+    assert len(row) == 1, f'instead of one row for country {country_code}, {len(row)} found.'
+    return row['overall_currency_conversion_to_2017_ppp'].values[0]
+
+
+def get_survey_year_wb_rate(country_code, currency_year):
+    assert str(currency_year) in ['2017', '2021']
+
+    aux_files = glob('/data/eop/compiled_country_data/auxiliary_data/auxiliary_data_*.csv')
+    latest_file = max(aux_files, key=lambda x: x.split('_')[-1].split('.')[0])
+    aux_data = pd.read_csv(latest_file)
+
+    row = aux_data[aux_data['country_code'] == country_code]
+    assert len(row) == 1, f'instead of one row for country {country_code}, {len(row)} found.'
+    return row[f'wb_poverty_rate_povertyline_{currency_year}_survey_year'].values[0]
+
+# Separate function to produce consumption using custom deflators from Elizabeth Foster.
 def get_ehcvm_consumption(country_code, survey_year):
 
     conversion_factors = pd.read_csv('/data/eop/compiled_country_data/currency_conversion.csv')

@@ -1,0 +1,12 @@
+auxpath: /data/eop/compiled_country_data/auxiliary_data/auxiliary_data_20260107.csv
+data:
+  geo_extrapolation: true
+  gt:
+    summarypath: /data/eop/country_data/TGO/cleaned/satej_features_1nn_coordinates/summary.parquet
+    trainpath: /data/eop/country_data/TGO/cleaned/satej_features_1nn_coordinates/train.parquet
+  outcome: consumption_per_capita_per_day
+  weight: headcount_adjusted_hh_wgt
+  year: 2017
+device: cuda
+oracle_gap: {}
+savedir: /home/selker/eop/eop/run_togo_simulations/simulations_20260120/learn/results/togo_satej_features_1nn_coordinates
